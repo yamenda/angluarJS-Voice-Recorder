@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+
+<head>
+
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/mdb.js"></script>
+    <script type="text/javascript" src="assets/js/popper.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/mdb.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</head>
+
+<body>
+
+<div class="container" ng-controller="mainController">
+    <br/>
+    <div class="text-center">
+        <h1>Voice Recorder</h1>
+        <img src="images/images.png" class="rounded"/>
+    </div>
+    <div class="text-center">
+        <audio ng-show="success" id="audio" controls></audio>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-blue btn-lg" id="record" ng-click="startRec()" ng-disabled="!record">Record</button>
+            <button class="btn btn-danger btn-lg" id="stop" ng-click="stopRec()" ng-disabled="record">Stop</button>
+            <button class="btn btn-success btn-lg" id="info" ng-click="getInfo()" ng-disabled="!success">Info</button>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-show="info">
+        <div class="col"></div>
+        <div class="col text-center">
+            <div class="card card-cascade">
+                <div class="view view-cascade gradient-card-header blue-gradient">
+                    <h2 class="card-header-title">Record Info</h2>
+                </div>
+                <div class="card-body card-body-cascade text-center">
+                    <mdb-card-text>
+                        <strong>
+                            File Size:
+                        </strong>
+                        {{ fileSize }}
+                    </mdb-card-text>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+
+</div>
+
+<div ng-view></div>
+
+</body>
+
+</html>
